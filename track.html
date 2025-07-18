@@ -55,6 +55,11 @@
   <script>
     const shipments = {
       "599652932": {
+        shipper: {
+          name: "Gabriella Mendez",
+          email: "grabriellamendez180@gmail.com",
+          location: "Accra, Ghana"
+        },
         receiver: {
           name: "Roland Herbert Delucca Jnr",
           address: "480 Georgetown Road, Clarksville, Tennessee 37043",
@@ -81,9 +86,17 @@
 
       result.innerHTML = `
         <h3>Status: ${data.status}</h3>
-        <p><strong>Receiver:</strong> ${data.receiver.name}</p>
+
+        <h4>Shipper Information:</h4>
+        <p><strong>Name:</strong> ${data.shipper.name}</p>
+        <p><strong>Email:</strong> ${data.shipper.email}</p>
+        <p><strong>Location:</strong> ${data.shipper.location}</p>
+
+        <h4>Receiver Information:</h4>
+        <p><strong>Name:</strong> ${data.receiver.name}</p>
         <p><strong>Address:</strong> ${data.receiver.address}</p>
         <p><strong>Phone:</strong> ${data.receiver.phone}</p>
+
         <h4>Shipping History:</h4>
         <table>
           <thead>

@@ -2,16 +2,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Custom Shipping Tracker</title>
+  <title>Shipping Tracker</title>
   <style>
-    body { font-family: Arial; text-align: center; margin-top: 50px; }
-    input, button { padding: 10px; font-size: 16px; margin: 10px; }
-    #result { margin-top: 30px; max-width: 600px; margin-left: auto; margin-right: auto; text-align: left; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      text-align: center;
+      padding: 50px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    #result {
+      background: white;
+      margin-top: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    ul {
+      padding-left: 20px;
+    }
   </style>
 </head>
 <body>
-  <h1>Enter Tracking Number</h1>
-  <input type="text" id="trackingNumber" placeholder="e.g., ABC123">
+  <h1>📦 Track Your Shipment</h1>
+  <input type="text" id="trackingNumber" placeholder="Enter tracking number">
   <button onclick="track()">Track</button>
   <div id="result"></div>
 
@@ -36,6 +65,16 @@
           "13 July, 2025 - Out for delivery",
           "12 July, 2025 - Departed sorting center"
         ]
+      },
+      "599652932": {
+        receiver: "Roland Herbert Delucca Jnr",
+        address: "Roland DeLucca<br>480 Georgetown Road<br>Clarksville, Tennessee 37043<br>Tel: 931-800-7976",
+        status: "In Transit",
+        history: [
+          "15 July, 2025 at 8:20am - Item departed from a sorting facility in Accra",
+          "15 July, 2025 at 7:45am - Scanned at Accra sorting hub",
+          "15 July, 2025 at 7:00am - Item received from sender, location Accra Ghana"
+        ]
       }
     };
 
@@ -52,7 +91,7 @@
       result.innerHTML = `
         <h2>Status: ${data.status}</h2>
         <p><strong>Receiver:</strong> ${data.receiver}</p>
-        <p><strong>Address:</strong> ${data.address}</p>
+        <p><strong>Address:</strong><br>${data.address}</p>
         <h3>Shipping History:</h3>
         <ul>${data.history.map(h => `<li>${h}</li>`).join("")}</ul>
       `;

@@ -87,16 +87,6 @@
       result.innerHTML = `
         <h3>Status: ${data.status}</h3>
 
-        <h4>Shipper Information:</h4>
-        <p><strong>Name:</strong> ${data.shipper.name}</p>
-        <p><strong>Email:</strong> ${data.shipper.email}</p>
-        <p><strong>Location:</strong> ${data.shipper.location}</p>
-
-        <h4>Receiver Information:</h4>
-        <p><strong>Name:</strong> ${data.receiver.name}</p>
-        <p><strong>Address:</strong> ${data.receiver.address}</p>
-        <p><strong>Phone:</strong> ${data.receiver.phone}</p>
-
         <h4>Shipping History:</h4>
         <table>
           <thead>
@@ -106,6 +96,16 @@
             ${data.history.map(h => `<tr><td>${h.date}</td><td>${h.event}</td></tr>`).join("")}
           </tbody>
         </table>
+
+        <h4>Shipper Information:</h4>
+        <p><strong>Name:</strong> ${data.shipper.name}</p>
+        <p><strong>Email:</strong> ${data.shipper.email}</p>
+        <p><strong>Location:</strong> ${data.shipper.location}</p>
+
+        <h4>Receiver Information:</h4>
+        <p><strong>Name:</strong> ${data.receiver.name}</p>
+        <p><strong>Address:</strong> ${data.receiver.address}</p>
+        <p><strong>Phone:</strong> ${data.receiver.phone}</p>
       `;
     }
   </script>

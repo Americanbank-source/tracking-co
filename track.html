@@ -13,6 +13,8 @@
     th { background-color: #0055a5; color: white; }
     tr:nth-child(even) { background-color: #f2f9ff; }
     .badge { display: inline-block; background-color: #0055a5; color: white; padding: 5px 10px; border-radius: 20px; margin: 5px; font-size: 14px; }
+    .proof { margin-top: 20px; text-align: center; }
+    .proof img { max-width: 100%; border: 1px solid #ccc; border-radius: 10px; }
   </style>
 </head>
 <body>
@@ -37,6 +39,8 @@
           phone: "931-800-7976"
         },
         expectedDelivery: "25 July, 2025",
+        currentLocation: "Lagos, Nigeria",
+        proofImage: "proof_package.jpg",
         status: "In Transit",
         route: ["Ghana", "Nigeria", "Belgium", "Ohio", "Tennessee"],
         history: [
@@ -67,6 +71,7 @@
       result.innerHTML = `
         <h3>Status: ${data.status}</h3>
         <p><strong>Expected Delivery Date:</strong> ${data.expectedDelivery}</p>
+        <p><strong>Current Location:</strong> ${data.currentLocation}</p>
 
         <h4>Route Path:</h4>
         <div>${routeDisplay}</div>
@@ -78,6 +83,11 @@
             ${descendingHistory.map(h => `<tr><td>${h.date}</td><td>${h.event}</td></tr>`).join("")}
           </tbody>
         </table>
+
+        <h4>Proof of Package:</h4>
+        <div class="proof">
+          <img src="${data.proofImage}" alt="Proof of Package">
+        </div>
 
         <h4>Shipper Information:</h4>
         <p><strong>Name:</strong> ${data.shipper.name}</p>

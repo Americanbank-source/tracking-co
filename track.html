@@ -32,16 +32,39 @@
     <div id="result" style="margin-top: 20px;"></div>
   </div>
 
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+    th {
+      background-color: #0055a5;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f9ff;
+    }
+  </style>
+
   <script>
     const shipments = {
       "599652932": {
-        receiver: "Roland Herbert Delucca Jnr",
-        address: "Roland DeLucca<br>480 Georgetown Road<br>Clarksville, Tennessee 37043<br>Tel: 931-800-7976",
+        receiver: {
+          name: "Roland Herbert Delucca Jnr",
+          address: "480 Georgetown Road, Clarksville, Tennessee 37043",
+          phone: "931-800-7976"
+        },
         status: "In Transit",
         history: [
-          "15 July, 2025 at 8:20am - Item departed from a sorting facility in Accra",
-          "15 July, 2025 at 7:45am - Scanned at Accra sorting hub",
-          "15 July, 2025 at 7:00am - Item received from sender, location Accra Ghana"
+          { date: "15 July, 2025 at 8:20am", event: "Item departed from a sorting facility in Accra" },
+          { date: "15 July, 2025 at 7:45am", event: "Scanned at Accra sorting hub" },
+          { date: "15 July, 2025 at 7:00am", event: "Item received from sender, location Accra Ghana" }
         ]
       }
     };
@@ -58,10 +81,18 @@
 
       result.innerHTML = `
         <h3>Status: ${data.status}</h3>
-        <p><strong>Receiver:</strong> ${data.receiver}</p>
-        <p><strong>Address:</strong><br>${data.address}</p>
+        <p><strong>Receiver:</strong> ${data.receiver.name}</p>
+        <p><strong>Address:</strong> ${data.receiver.address}</p>
+        <p><strong>Phone:</strong> ${data.receiver.phone}</p>
         <h4>Shipping History:</h4>
-        <ul>${data.history.map(h => `<li>${h}</li>`).join("")}</ul>
+        <table>
+          <thead>
+            <tr><th>Date & Time</th><th>Event</th></tr>
+          </thead>
+          <tbody>
+            ${data.history.map(h => `<tr><td>${h.date}</td><td>${h.event}</td></tr>`).join("")}
+          </tbody>
+        </table>
       `;
     }
   </script>

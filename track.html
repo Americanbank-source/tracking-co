@@ -50,6 +50,15 @@
     tr:nth-child(even) {
       background-color: #f2f9ff;
     }
+    .badge {
+      display: inline-block;
+      background-color: #0055a5;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      margin: 5px;
+      font-size: 14px;
+    }
   </style>
 
   <script>
@@ -65,7 +74,9 @@
           address: "480 Georgetown Road, Clarksville, Tennessee 37043",
           phone: "931-800-7976"
         },
+        expectedDelivery: "25 July, 2025",
         status: "In Transit",
+        route: ["Ghana", "Nigeria", "Belgium", "Ohio", "Tennessee"],
         history: [
           { date: "15 July, 2025 at 8:20am", event: "Item departed from a sorting facility in Accra" },
           { date: "15 July, 2025 at 7:45am", event: "Scanned at Accra sorting hub" },
@@ -85,9 +96,14 @@
       }
 
       const descendingHistory = data.history.slice().reverse();
+      const routeDisplay = data.route.map(location => `<span class="badge">${location}</span>`).join("");
 
       result.innerHTML = `
         <h3>Status: ${data.status}</h3>
+        <p><strong>Expected Delivery Date:</strong> ${data.expectedDelivery}</p>
+
+        <h4>Route Path:</h4>
+        <div>${routeDisplay}</div>
 
         <h4>Shipping History:</h4>
         <table>

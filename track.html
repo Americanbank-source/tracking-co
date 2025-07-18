@@ -84,6 +84,8 @@
         return;
       }
 
+      const descendingHistory = data.history.slice().reverse();
+
       result.innerHTML = `
         <h3>Status: ${data.status}</h3>
 
@@ -93,7 +95,7 @@
             <tr><th>Date & Time</th><th>Event</th></tr>
           </thead>
           <tbody>
-            ${data.history.map(h => `<tr><td>${h.date}</td><td>${h.event}</td></tr>`).join("")}
+            ${descendingHistory.map(h => `<tr><td>${h.date}</td><td>${h.event}</td></tr>`).join("")}
           </tbody>
         </table>
 

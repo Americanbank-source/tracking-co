@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Shipping Tracker</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    input, button { padding: 10px; font-size: 16px; margin: 10px; }
+    #result { margin-top: 30px; max-width: 600px; margin-left: auto; margin-right: auto; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Enter Tracking Number</h1>
+  <input type="text" id="trackingNumber" placeholder="e.g., ABC123">
+  <button onclick="track()">Track</button>
+  <div id="result"></div>
+
+  <script>
+    const shipments = {
+      "ABC123": {
+        receiver: "John Doe",
+        address: "45 New York Ave, USA",
+        status: "In Transit",
+        history: [
+          "17 July, 2025 - Departed Accra Hub",
+          "16 July, 2025 - Arrived in Accra",
+          "15 July, 2025 - Package Registered"
+        ]
+      },
+      "XYZ789": {
+        receiver: "Sarah Owusu",
+        address: "Kumasi, Ghana",
+        status: "Delivered",
+        history: [
+          "14 July, 2025 - Delivered",
+          "13 July, 2025 - Out for delivery",
+          "12 July, 2025 - Departed sorting center"
+        ]
+      }
+    };
+
+    function track() {
+      const code = document.getElementById("trackingNumber").value.trim().toUpperCase();
+      const result = document.getElementById("result");
+      const data = shipments[code];
+
+      if (!data) {
+        result.innerHTML = "<p style='color:red;'>Tracking number not found.</p>";
+        return;
+      }
+
+      result.innerHTML = `
+        <h2>Status: ${data.status}</h2>
+        <p><strong>Receiver:</strong> ${data.receiver}</p>
+        <p><strong>Address:</strong> ${data.address}</p>
+        <h3>Shipping History:</h3>
+        <ul>${data.history.map(h => `<li>${h}</li>`).join("")}</ul>
+      `;
+    }
+  </script>
+</body>
+</html>

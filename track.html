@@ -15,6 +15,7 @@
     .badge { display: inline-block; background-color: #0055a5; color: white; padding: 5px 10px; border-radius: 20px; margin: 5px; font-size: 14px; }
     .proof { margin-top: 20px; text-align: center; }
     .proof img { max-width: 100%; border: 1px solid #ccc; border-radius: 10px; }
+    .note { margin-top: 30px; background: #fff8e1; border-left: 5px solid #ffa000; padding: 15px; border-radius: 5px; }
   </style>
 </head>
 <body>
@@ -38,12 +39,13 @@
           address: "480 Georgetown Road, Clarksville, Tennessee 37043",
           phone: "931-800-7976"
         },
-        expectedDelivery: "22 July, 2025",
-        currentLocation: "Belgium",
+        expectedDelivery: "21 July, 2025 before end of the day",
+        currentLocation: "Ohio",
         proofImage: "proof_package.jpg",
         status: "In Transit",
         route: ["Ghana", "Nigeria", "Belgium", "Ohio", "Tennessee"],
         history: [
+          { date: "19 July, 2025 at 3:00pm", event: "Item arrived at Ohio sorting center" },
           { date: "19 July, 2025 at 12:40", event: "Item departed from a sorting facility in Belgium" },
           { date: "19 July, 2025 at 12:20", event: "Item scanned in Belgium" },
           { date: "19 July, 2025 at 12:00am", event: "Item arrived at Belgium" },
@@ -87,6 +89,8 @@
           </tbody>
         </table>
 
+<div class="note" style="color: #b30000; font-weight: bold; margin-top: 15px;">⚠️ Custom clearance status updated: A fee of $2,000 must be paid to clear the item upon arrival in Tennessee. Late payment may delay delivery. 🚚</div>
+
         <h4>Proof of Package:</h4>
         <div class="proof">
           <img src="${data.proofImage}" alt="Proof of Package">
@@ -101,6 +105,11 @@
         <p><strong>Name:</strong> ${data.receiver.name}</p>
         <p><strong>Address:</strong> ${data.receiver.address}</p>
         <p><strong>Phone:</strong> ${data.receiver.phone}</p>
+
+        <!-- Removed previous note section -->
+          <strong>Note:</strong> Custom clearance status updated. A fee of <strong>$2,000</strong> must be paid to clear the item when it arrives at its destination (Tennessee).<br>
+          <strong>⚠️ Late payment may delay delivery 🚚</strong>
+        </div>
       `;
     }
   </script>

@@ -39,12 +39,14 @@
           address: "480 Georgetown Road, Clarksville, Tennessee 37043",
           phone: "931-800-7976"
         },
-        expectedDelivery: "21 July, 2025 before end of the day",
-        currentLocation: "Ohio",
+        expectedDelivery: "22 July, 2025",
+        currentLocation: "Tennessee",
         proofImage: "proof_package.jpg",
         status: "In Transit",
         route: ["Ghana", "Nigeria", "Belgium", "Ohio", "Tennessee"],
         history: [
+          { date: "22 July, 2025 at 12:30", event: "Item arrived in Tennessee Nashville" },
+          { date: "19 July, 2025 at 9:30pm", event: "Item departed from a sorting facility in Ohio" },
           { date: "19 July, 2025", event: "Item departed from Ohio" },
           { date: "19 July, 2025 at 9:00pm", event: "Item scanned in Ohio sorting hub" },
           { date: "19 July, 2025 at 3:00pm", event: "Item arrived at Ohio sorting center" },
